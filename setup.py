@@ -7,30 +7,13 @@ with open(os.path.join(here, 'README.txt')) as f:
     README = f.read()
 with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
-
-requires = [
-    'plaster_pastedeploy',
-    'pyramid',
-    'pyramid_mako',
-    'pyramid_debugtoolbar',
-    'waitress',
-    'alembic',
-    'pyramid_retry',
-    'pyramid_tm',
-    'SQLAlchemy',
-    'transaction',
-    'zope.sqlalchemy',
-]
-
-tests_require = [
-    'WebTest',
-    'pytest',
-    'pytest-cov',
-]
+def read_requirements():
+    with open('requirements.txt') as f:
+        return f.read().splitlines()
 
 setup(
     name='languapedia',
-    version='0.0',
+    version='0.0.1',
     description='Languapedia',
     long_description=README + '\n\n' + CHANGES,
     classifiers=[
@@ -46,10 +29,7 @@ setup(
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     zip_safe=False,
-    extras_require={
-        'testing': tests_require,
-    },
-    install_requires=requires,
+    install_requires=read_requirements(),
     entry_points={
         'paste.app_factory': [
             'main = languapedia:main',

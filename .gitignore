@@ -98,3 +98,6 @@ data_files
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 node_modules
+
+# Pyramid early files
+testing.sqlite
