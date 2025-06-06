@@ -19,8 +19,8 @@ def setup_models(dbsession):
 def parse_args(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        'config_uri',
-        help='Configuration file, e.g., development.ini',
+        "config_uri",
+        help="Configuration file, e.g., development.ini",
     )
     return parser.parse_args(argv[1:])
 
@@ -31,8 +31,8 @@ def main(argv=sys.argv):
     env = bootstrap(args.config_uri)
 
     try:
-        with env['request'].tm:
-            dbsession = env['request'].dbsession
+        with env["request"].tm:
+            dbsession = env["request"].dbsession
             setup_models(dbsession)
     except OperationalError:
         print('''
